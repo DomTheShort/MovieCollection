@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container">
+
+    <div th:if="${not #lists.isEmpty(movielist)}">
+        <h2>Movie List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+            </tr>
+            <tr th:each="movie : ${movielist.movies}">
+                <td th:inline="text"><a th:href="${'/omdb/' + movie.imdbID + '/detail'}">[[${movie.imdbID}]]</a></td>
+                <td th:text="${movie.title}">Title</td>
+                <td th:text="${movie.imdbRating}">IMDB Rating</td>
+                <!--<td><a th:href="${'/movie/' + movie.id}">View</a></td>
+                <td><a th:href="${'/movie/edit/' + movie.id}">Edit</a></td>
+                <td><a th:href="${'/movie/delete/' + movie.id}">Delete</a></td>-->
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
